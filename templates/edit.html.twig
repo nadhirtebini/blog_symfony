@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Article{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .background-image {
+            background-image: url('/images/the-illustration-graphic-consists-of-abstract-background-with-a-blue-gradient-dynamic-shapes-composition-eps10-perfect-for-presentation-background-website-landing-page-wallpaper-vector.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh; /* Ajustez au besoin */
+            width: 100%; /* Occupe toute la largeur de la page */
+            display: flex;
+            justify-content: center; /* Alignement horizontal au centre */
+            align-items: center; /* Alignement vertical au centre */
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond semi-transparente */
+            padding: 60px;
+            border-radius: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="background-image">
+    <div class="form-container">
+        <h1 class="mb-4">Edit Article</h1>
+        
+        <div class="card">
+            <div class="card-body">
+                {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+                
+                <div class="form-group">
+                    {{ form_label(form.title, 'Title', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Enter title'}}) }}
+                    {{ form_errors(form.title) }}
+                </div>
+                
+                <div class="form-group">
+                    {{ form_label(form.content, 'Content', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                    {{ form_widget(form.content, {'attr': {'class': 'form-control', 'placeholder': 'Enter content', 'rows': 5}}) }}
+                    {{ form_errors(form.content) }}
+                </div>
+                
+                <div class="form-group">
+                    {{ form_label(form.author, 'Author', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                    {{ form_widget(form.author, {'attr': {'class': 'form-control', 'placeholder': 'Enter author name'}}) }}
+                    {{ form_errors(form.author) }}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
